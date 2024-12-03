@@ -1,8 +1,9 @@
 package hust.soict.dsai.aims.cart;
 import java.util.ArrayList;
+import java.util.List;
 import hust.soict.dsai.aims.media.Media;
 public class Cart {
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	public List<Media> itemsOrdered = new ArrayList<Media>();
 	public void addMedia(Media media) {
 	    if (!itemsOrdered.contains(media)) {
 	        itemsOrdered.add(media);
@@ -49,6 +50,25 @@ public void searchByTitle(String title) {
     if (!found) {
         System.out.println("No DVDs found with the title \"" + title + "\".");
     }
+    
+}
+public void sortByTitleCost() {
+    Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+    System.out.println("Cart sorted by Title then Cost:");
+    displayCart(); // Hiển thị lại giỏ hàng sau khi sắp xếp
+}
+public void sortByCostTitle() {
+    Collections.sort(itemsOrdered, new Comparator<Media>() {
+        @Override
+        public int compare(Media m1, Media m2) {
+            int costCompare = Float.compare(m2.getCost(), m1.getCost());
+            if (costCompare == 0) {
+                return m1.getTitle().compareToIgnoreCase(m2.getTitle());
+            }
+            return costCompare;
+        }
+    });
+
 }
 }
 

@@ -4,8 +4,9 @@ import java.util.ArrayList;
 public class CompactDisc extends Disc implements Playable{
 	private String artist;
 	private ArrayList<Track> tracks = new ArrayList<>();
-	public CompactDisc(int id, String title, String category, float cost) {
-		super();
+	public CompactDisc(int id, String title, String category, float cost,String artist) {
+		super(id,title,category,cost);
+		this.artist = artist;
 	}
 	public ArrayList<Track> getTracks() {
 		return tracks;
@@ -43,6 +44,10 @@ public class CompactDisc extends Disc implements Playable{
 	    System.out.println("Total length: " + this.getLength() + " seconds");
 	    for (Track track : tracks) {
 	        track.play();
+	    }
+	    @Override
+	    public String toString() {
+	        return super.toString() + ", Artist: " + artist;
 	    }
 	}
 

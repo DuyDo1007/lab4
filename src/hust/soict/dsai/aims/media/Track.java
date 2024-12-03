@@ -30,6 +30,10 @@ public class Track implements Playable {
 	    Track track = (Track) obj;
 	    return length == track.length && title.equalsIgnoreCase(track.title);
 	}
+	@Override
+	public String toString() {
+        return "Track [title=" + title + ", length=" + length + "]";
+    }
 
 
 }

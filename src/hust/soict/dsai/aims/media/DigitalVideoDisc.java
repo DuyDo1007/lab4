@@ -1,13 +1,11 @@
 package hust.soict.dsai.aims.media;
 public class DigitalVideoDisc extends Disc implements Playable{
-public DigitalVideoDisc(String director, String category, String title, float cost) {
-	super();
-}
-private static int nbDigitalVideoDiscs = 0;
-public DigitalVideoDisc(String title) {
-    this.title = title;
-    nbDigitalVideoDiscs++;
-    this.id = nbDigitalVideoDiscs;
+	private String director;
+	private int length;
+	public DigitalVideoDisc(int id,String title, String category, float cost,String director,int length) {
+	super(id,title,category,cost);
+    this.director = director;
+    this.length = length;
 }
 public boolean isMatch(String title) {
 	if (this.title == title) return true;

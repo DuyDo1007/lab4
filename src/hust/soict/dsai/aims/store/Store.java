@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.store;
 import java.util.ArrayList;
+import java.util.Collections;
 
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 import java.util.ArrayList;
 public class Store {
@@ -32,5 +32,17 @@ public class Store {
             System.out.println((i + 1) + ". " + itemsInStore.toString());
         }
         System.out.println("***************************************************");
+    }
+    public void sortStoreByCostTitle() {
+        Collections.sort(itemsInStore, new Comparator<Media>() {
+            @Override
+            public int compare(Media m1, Media m2) {
+                int costCompare = Float.compare(m2.getCost(), m1.getCost());
+                if (costCompare == 0) {
+                    return m1.getTitle().compareToIgnoreCase(m2.getTitle());
+                }
+                return costCompare;
+            }
+        });
     }
 }

@@ -4,6 +4,7 @@ public class Disc extends Media {
 	private String director;
 	public Disc() {
 		super();
+		this.director = director;
 	}
 	public int getLenght() {
 		return lenght;

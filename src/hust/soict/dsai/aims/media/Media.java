@@ -1,10 +1,43 @@
 package hust.soict.dsai.aims.media;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Media {
 	private int id;
-	private String title;
-	private String category;
-	private float cost; 
+	public String title;
+	public String category;
+	public float cost; 
+	public Media(int id, String title, String category, float cost) {
+        this.id = id;
+        this.title = title;
+        this.category = category;
+        this.cost = cost;
+    }
+	public Media () {
+		public static final Comparator<Media> COMPARE_BY_TITLE_COST = new Comparator<Media>() {
+		    @Override
+		    public int compare(Media m1, Media m2) {
+		        int titleCompare = m1.getTitle().compareToIgnoreCase(m2.getTitle());
+		        if (titleCompare == 0) {
+		            return Float.compare(m2.getCost(), m1.getCost());
+		        }
+		        return titleCompare;
+		    }
+		};
+		public static final Comparator<Media> COMPARE_BY_COST_TITLE = new Comparator<Media>() {
+		    @Override
+		    public int compare(Media m1, Media m2) {
+		        int costCompare = Float.compare(m2.getCost(), m1.getCost());
+		        if (costCompare == 0) {
+		            return m1.getTitle().compareToIgnoreCase(m2.getTitle());
+		        }
+		        return costCompare;
+		    }
+		};
+
+
+}
 	public int getId() {
 		return id;
 	}
@@ -36,10 +69,6 @@ public abstract class Media {
 	public void setCost(float cost) {
 		this.cost = cost;
 	}
-
-	public Media() {
-		// TODO Auto-generated constructor stub
-	}
 	@Override
 	public boolean equals(Object obj) {
 	    if (this == obj) return true;
@@ -47,7 +76,8 @@ public abstract class Media {
 	    Media media = (Media) obj;
 	    return title.equalsIgnoreCase(media.title);
 	}
-	
-
-
+	@Override
+	public String toString() {
+	    return "Media [id=" + id + ", title=" + title + ", category=" + category + ", cost=" + cost + "]";
+	}
 }
