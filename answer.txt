@@ -1,0 +1,5 @@
+Q1:
+-Media hoặc các lớp con của nó.
+-
+-Không thể,chỉ 1 trong 2.
+-Có thể Override trong DVD class.Code trong phần Override class DVDs.
